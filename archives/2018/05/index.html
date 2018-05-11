@@ -23,6 +23,8 @@
 
 
 
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
 
 
 
@@ -49,8 +51,8 @@
     </title>
 
     <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" href="/img/favicon.png">
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.jpg">
+    <link rel="icon" href="/img/favicon.jpg">
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="">
@@ -162,12 +164,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
-      }
-
-      /* blog_info bottom background */
-      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-        background-color: #fff;
+        background-image: url(/img/bg.png);
       }
     </style>
 
@@ -220,7 +217,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Saigyouji-Yuyuko">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.jpg">
 
     <!-- Site Verification -->
     
@@ -233,7 +230,7 @@
     <meta property="og:url" content="https://Saigyouji-Yuyuko.github.io/archives/2018/05/">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="归档: 2018/5 | Saigyouji-Yuyuko">
-    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:image" content="/img/favicon.jpg">
     <meta property="og:description" content="">
     
 
@@ -258,6 +255,10 @@
     <!-- Analytics -->
     
     
+    
+        <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1273677710&web_id=1273677710" language="JavaScript"></script>
+</div>
     
 
     <!-- Custom Head -->
@@ -300,10 +301,8 @@
                 <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
     <!-- Post Thumbnail -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50 lazy" data-original="/gallery-data/photo_2018-04-16_02-46-10.jpg">
     
 
         <!-- Post Title -->
@@ -313,7 +312,7 @@
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            Welcome to Hexo
+            搭建过程
         
         &nbsp;&nbsp;&nbsp;
         <span>
@@ -325,7 +324,7 @@
         <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
             <!-- Author Avatar -->
             <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Saigyouji-Yuyuko's avatar">
+                <img src="/img/avatar.jpg" width="44px" height="44px" alt="Saigyouji-Yuyuko's avatar">
             </div>
             <div>
                 <strong>Saigyouji-Yuyuko</strong>
@@ -359,10 +358,10 @@
 
     var locatePost = $('.locate-thumbnail-symbol').next();
     for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
+        randomNum = Math.floor(Math.random() * 11 + 1);
 
         locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/r' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
 
         locatePost = locatePost.next();
@@ -381,7 +380,7 @@
 <aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
     <div id="sidebar-main">
         <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+        <div class="sidebar-header header-cover" style="background-image: url(/img/20141116132053_VGeya.jpeg);">
     <!-- Top bar -->
     <div class="top-bar"></div>
 
@@ -396,12 +395,12 @@
 
     <!-- Sidebar Avatar -->
     <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="Saigyouji-Yuyuko's avatar">
+        <img src="/img/avatar.jpg" alt="Saigyouji-Yuyuko's avatar">
     </div>
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        
         <b class="caret"></b>
     </a>
 </div>
@@ -414,7 +413,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="mailto: tanlinshishian@163.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -461,8 +460,76 @@
 
     <!-- Pages  -->
     
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间线">
+                
+                    <i class="material-icons sidebar-material-icons">query_builder</i>
+                
+                时间线
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="收图">
+                
+                    <i class="material-icons sidebar-material-icons">filter</i>
+                
+                收图
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/reading" title="Reading list">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Reading list
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/money" title="我很可爱，请给我钱">
+                
+                我很可爱，请给我钱
+            </a>
+        </li>
+        
+    
 
     <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">1</span>
+            </a>
+        </li>
+        
     
 </ul>
 
@@ -495,6 +562,15 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Help & Support -->
 <!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
 
 -->
 
@@ -534,32 +610,20 @@ It will not impact the appearance and can give developers a lot of support :)
         <div class="mdl-mini-footer--left-section sns-list">
     <!-- Twitter -->
     
-        <a href="https://twitter.com/twitter" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
-                <span class="visuallyhidden">Twitter</span>
-            </button><!--
-     --></a>
-    
 
     <!-- Facebook -->
-    
-        <a href="https://www.facebook.com/facebook" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
-                <span class="visuallyhidden">Facebook</span>
-            </button><!--
-     --></a>
     
 
     <!-- Google + -->
     
-        <a href="https://www.google.com/" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
-                <span class="visuallyhidden">Google Plus</span>
-            </button><!--
-     --></a>
-    
 
     <!-- Weibo -->
+    
+        <a href="https://weibo.com/u/5238757966" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
     
 
     <!-- Instagram -->
@@ -570,17 +634,35 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Github -->
     
+        <a href="https://github.com/Saigyouji-Yuyuko" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
 
     <!-- LinkedIn -->
     
 
     <!-- Zhihu -->
     
+        <a href="https://www.zhihu.com/people/Saigyouji-Yuyuko/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
 
     <!-- Bilibili -->
     
 
     <!-- Telegram -->
+    
+        <a href="https://telegram.me/Saigyouji%20Yuyuko" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
     
     
     <!-- V2EX -->
@@ -590,7 +672,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Saigyouji-Yuyuko
+            Copyright&nbsp;©&nbsp;2018&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Saigyouji-Yuyuko
             
         </div>
 
@@ -650,11 +732,21 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+    
+        <script>lsloader.load("sm_js","/js/smoothscroll.js?tNQK2Tw2SUL8a1Scn/Mgew==", true)</script>
+    
 
 
 
 
 
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//blog-3pgvTI5x1r.disqus.com/count.js" async></script>
 
 
 
