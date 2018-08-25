@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Mon Aug 20 2018 22:54:34 GMT+0800">
-        <meta property="article:modified_time" content="Tue Aug 21 2018 03:34:20 GMT+0800">
+        <meta property="article:modified_time" content="Fri Aug 24 2018 01:05:54 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "https://Saigyouji-Yuyuko.github.io/2018/08/20/chubby/index.html",
     "headline": "Chubby：分布式，去耦合，工程与妥协。",
     "datePublished": "Mon Aug 20 2018 22:54:34 GMT+0800",
-    "dateModified": "Tue Aug 21 2018 03:34:20 GMT+0800",
+    "dateModified": "Fri Aug 24 2018 01:05:54 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Saigyouji-Yuyuko",
@@ -503,8 +503,8 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>首先，论文地址：<a href="http://static.usenix.org/legacy/events/osdi06/tech/full_papers/burrows/burrows.pdf" target="_blank" rel="noopener">The Chubby lock service for loosely-coupled distributed system</a>  </p>
-<p>这篇paper论述了一些chubby实现上除了paxos以外的一些设计，关于paxos的设计与取舍上是另外一篇论文，链接在此：<a href="http://www8.cs.umu.se/kurser/5DV153/HT14/literature/chandra2006paxos.pdf" target="_blank" rel="noopener">Paxos made live: an engineering perspective</a>（以后会补一个阅读笔记）。其实我最开始读的是讲paxos算法的论文，chubby我一直没读，我当时搜了下chubby大概的功能，觉得搞清paxos大概就差不多可以搞个这样的差不多功能的错觉（不就是个paxos + KV吗，拍飞）。。。。昨天读了一下这篇，发现教我做人了。。。。怂了怂了。。。读完之后我就有一个感觉，工程是拖鞋，啊呸，妥协的艺术。。。。  </p>
-<h2 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h2><p>chubby开篇就说是一个分布式的锁服务。什么是锁，锁其实是一个排他性的独占时间的一个举措。分布式一致性总的来说就是一个时间重排的问题，不同的时间发生的时间应该怎么依次发生？而锁应该是一种比较粗暴的玩法，所有事件都只能通过持有锁的方式来排序。也就是锁的获取顺序来决定事件的时间排序。<br>chubby通过引入锁的抽象来帮助开发者快速做到分布式开发，文章讲了几个理由，我总结一下：</p>
+<p>这篇paper论述了一些chubby实现上除了paxos以外的一些设计，关于paxos的设计与取舍上是另外一篇论文，链接在此：<a href="http://www8.cs.umu.se/kurser/5DV153/HT14/literature/chandra2006paxos.pdf" target="_blank" rel="noopener">Paxos made live: an engineering perspective</a>（以后会补一个阅读笔记）。其实我最开始读的是这篇讨论paxos算法的工程实现论文，chubby我一直没读，我当时搜了下chubby大概的功能，觉得搞清paxos大概就差不多可以搞个这样的差不多功能的错觉（不就是个paxos + KV吗，拍飞）。。。。昨天读了一下这篇，发现教我做人了。。。。怂了怂了。。。读完之后我就有一个感觉，工程是拖鞋，啊呸，妥协的艺术。。。。  </p>
+<h2 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h2><p>chubby开篇就说这是一个分布式的锁服务。什么是锁？锁是一个排他性的独占时间的一个举措。分布式，和并行一样本质是个时间问题。通过锁来排他性的独占时间来吧不同对象同时发生的事件顺序转化为锁的的抢占顺序。这是一种比较粗暴的玩法，所有事件都只能通过持有锁的方式来排序。也就是锁的获取顺序来决定事件的时间排序。那什么是分布式锁？分布式锁其实就是就是给分布是各个节点排序时提供一个排序举措的机制，通过抢占它来重排。<br>chubby通过引入锁的抽象来帮助开发者快速做到分布式开发，文章讲了几个理由，我总结一下：</p>
 <ul>
 <li><p>开发者不需要读一打paxos made xxx 再来写应用，也不需要在代码里搞一堆兼容一致性协议库的东西，从单机一步升级到分布式！surprise！</p>
 </li>
@@ -529,7 +529,7 @@
 <p>其实可以更深入一点，往往就是乐观锁与悲观锁的区别。乐观提升平时性能，但是出了点error就可能异常麻烦，甚至导致长时间不可用。悲观的话就是平时性能差点，当时保证出事就不慌了，看你怎么求取舍。。。。所谓减少系统通信次数来性能优化不过就是乐观玩法，出事了可能造成的不可用时间也会变长。。而lock delay就是悲观玩法，通过放弃一定性能来保证consistent。。。。  </p>
 <p>有人认为<a href="http://catkang.github.io/2017/09/29/chubby.html" target="_blank" rel="noopener">责任分散</a>也是一个特点。。。我是没感觉出来。。他说的故障恢复我比较同意，不一定要全持久化加重disk负担，但是我们也知道这是提高平时的效率，降低恢复时的效率的乐观玩法。。。。。</p>
 <p>chubby提供了一个分布式的锁机制，大家一般都通过它来master select或者name server。回到最开始，最基础其实consistent protocol + kv ，但是这样设计的话可用性大概约等于0把。。。。。。文章讨论了很多工程中的优化，使得我做一个这个成了可能（大坑）。不过chubby的持久化结构其实paper没有提，我感觉这不是个简单东西。。。</p>
-<p>chubby后来有zookeeper学他搞了自己一套，不过这玩意，正确性也确实很难保证。最好的方法肯定是TLA+之类的，但是难度太大。据说Amazon S3\ebs ，MS的cosmos都通过了证明。。zookeeper破司据说就被坑过两次。。。所以没事别自己瞎搞，别想不开。。。。。</p>
+<p>chubby后来有zookeeper学他搞了自己一套，不过这玩意，正确性也确实很难保证。最好的方法肯定是TLA+之类的，但是难度太大。据说Amazon S3/ebs ，MS的cosmos都通过了证明。。zookeeper破司据说就被坑过两次。。。所以没事别自己瞎搞，别想不开。。。。。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><p><a href="http://static.usenix.org/legacy/events/osdi06/tech/full_papers/burrows/burrows.pdf" target="_blank" rel="noopener">The Chubby lock service for loosely-coupled distributed system</a>  </p>
 </li>
@@ -588,6 +588,14 @@
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2018/08/21/time/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -687,7 +695,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -764,7 +772,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">2</span>
+                <span class="sidebar-badge">3</span>
             </a>
         </li>
         

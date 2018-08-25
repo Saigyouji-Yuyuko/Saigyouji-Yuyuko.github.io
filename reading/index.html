@@ -323,7 +323,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Saigyouji-Yuyuko</strong>
-        <span>5月 12, 2018</span>
+        <span>8月 26, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -427,13 +427,72 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h2><p>计划是希望2-3天一篇paper，不过反正计划永远赶不上变化，不过记录一下好了</p>
-<h3 id="18-05-12-Raft-Refloated-Do-We-Have-Consensus"><a href="#18-05-12-Raft-Refloated-Do-We-Have-Consensus" class="headerlink" title="18/05/12 Raft Refloated: Do We Have Consensus?"></a>18/05/12 <a href="/reading/2015-osr-raft.pdf">Raft Refloated: Do We Have Consensus?</a></h3><p>   啥都没讲，把raft复现一遍，吹了点逼，一半以上的内容和raft那篇就是一样的，不知道水文章作者是否获得了快乐！<br><br>   最后讲了下几点优化可以看下:<br></p>
-<ul>
-<li>candicate选举不成而后超时时间的的指数退避（其实因为选举有限制，当candicate发现自己永远无法选上的leader的时候（发现一半以上的node的最新log都比它的新），是否就应该暂停递增term，等待leader降临（我的实现做了这个工作））</li>
-<li>以及broadcast time和 follower timeout 和 candicate timeout 的关系，最后意见还是 10 ~ 20 的 broadcast time，说这样选举延迟最小。</li>
-<li>提到了server 和 client 之间可能出现活锁，这个就不清楚了，不过他说可以通过超时解决，MDZZ，哪个实现不需要超时？<br><br>其实核心还是老生常谈的的一个问题，就是分布式算法，难以标准化，难以测试，难以实现。导致大家的数据难以复现。最后说75%的paper数据都复现不了（只怕比ML还屌</li>
-</ul>
+        <h1 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h1><h2 id="Paxos-amp-Raft"><a href="#Paxos-amp-Raft" class="headerlink" title="Paxos &amp; Raft"></a>Paxos &amp; Raft</h2><p><input type="radio" checked disabled="disabled"><font size="4" color="black">  Raft Refloated: Do We Have Consensus?</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  In Search of an Understandable Consensus Algorithm</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  The Part-Time Parliament</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  Paxos Made Live - An Engineering Perspective</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  ZooKeeper Wait-free coordination for Internet-scale systems</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Vertical Paxos and Primary-Backup Replication</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Just Say NO to Paxos Overhead:Replacing Consensus with Network Ordering</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Paxos Made Parallel</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Paxos Made Simple</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Paxos Made Practical</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Paxos made code Implementing a high throughput Atomic Broadcast</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  PaxosLease Diskless Paxos for Leases</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  There Is More Consensus in Egalitarian Parliaments</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Flexible Paxos: Quorum intersection revisited</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Vive La Diff´erence:Paxos vs. Viewstamped Replication vs. Zab</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Tuning Paxos for high-throughput with batching and pipelining</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  The ABCD’s of Paxos</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Consensus: Bridging theory and practice</font></p>
+<h2 id="Engineering"><a href="#Engineering" class="headerlink" title="Engineering"></a>Engineering</h2><p><input type="radio" checked disabled="disabled"><font size="4" color="black">  Spanner Google’s Globally-Distributed Database</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  PolarFS: An Ultralow Latency and Failure Resilient Distributed File System for Shared Storage Cloud Database</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  Windows Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  The Chubby lock service for loosely-coupled distributed systems</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  Bitcoin A Peer-to-Peer Electronic Cash System</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  MapReduce Simplified Data Processing on Large Clusters</font></p>
+<p><input type="radio" checked disabled="disabled"><font size="4" color="black">  The Google File System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Bigtable A Distributed Storage System for Structured Data</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Ceph: A Scalable, High-Performance Distributed File System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  The Design of a Pratical System for Fault-Tolerant Virtual Machines</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  PacificA Replication in Log-Based Distributed Storage Systems</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Frangipani: A Scalable Distributed File System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Tango Distributed Data Structures over a Shared Log</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Chord A Scalable Peertopeer Lookup Service for Internet Applications</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Using Paxos to Build a Scalable, Consistent,and Highly Available Datastore</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Sinfonia: a new paradigm for building scalable distributed systems</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Scaling Distributed Machine Learning with the Parameter Server</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Amazon Aurora On Avoiding Distributed Consensus for IOs, Commits, and Membership Changes</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Naiad: A Timely Dataflow System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Scaling Memcache at Facebook</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Experiences with a Distributed, Scalable,Methodological File System: AnalogicFS</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Finding a needle in Haystack: Facebook’s photo storage</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Flash Reliability in Production The Expected and the Unexpected</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  No compromises: distributed transactions with consistency, availability, and performance</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Cassandra - A Decentralized Structured Storage System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Managing Update Conflicts in Bayou,a Weakly Connected Replicated Storage System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Amazon Aurora: Design Considerations for High Throughput Cloud-Native Relational Databases</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Dynamo: Amazon’s Highly Available Key-value Store</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Sorrento: A Self-Organizing Storage Cluster for Parallel Data-Intensive Applications</font></p>
+<h2 id="Theory"><a href="#Theory" class="headerlink" title="Theory"></a>Theory</h2><p><input type="radio" checked disabled="disabled"><font size="4" color="black">  Time, Clocks, and the Ordering of Events in a Distributed System</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Building Robust Systems an essay</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Chain Replication for Supporting High Throughput and Availability</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  The Future of Computing: Logic or Biology</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Effects for Funargs</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Life beyond Distributed Transactions: an Apostate’s Opinion</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  How to Make a Multiprocessor Computer That Correctly Executes Multiprocess Programs</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Brewer’s Conjecture and the Feasibility of Consistent, Available,Partition-Tolerant Web Services</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  A Theory of Hygienic Macros</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Timestamps in Message-Passing Systems That Preserve the Partial Ordering</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Virtual Time and Global States of Distributed Systems</font></p>
+<h1 id="Book"><a href="#Book" class="headerlink" title="Book"></a>Book</h1><p><input type="radio" disabled="disabled"><font size="4" color="black">  xv6 a simple, Unix-like teaching operating system</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Specifying Systems</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Designing Data-Intensive Applications</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  Category Theory for Programmers</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  A Course in Game Theory</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  SRE Google运维解密</font></p>
+<p><input type="radio" disabled="disabled"><font size="4" color="black">  A Theory of Objects</font></p>
 
         
     
@@ -573,7 +632,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -650,7 +709,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">2</span>
+                <span class="sidebar-badge">3</span>
             </a>
         </li>
         
